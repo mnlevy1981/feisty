@@ -41,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -429,7 +429,7 @@
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -463,14 +463,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>FEISTY Settings</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="section" id="feisty-settings">
@@ -483,10 +493,10 @@
 <p>This section defines aspects of the model structure, including the size classes and names of the model functional types.</p>
 <dt>size_class_bounds</dt><dd><p>Specify the names and bounds for the model size classes [grams].</p>
 <p>Example:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">size_class_bounds</span><span class="p">:</span>
-  <span class="nt">small</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.001</span><span class="p p-Indicator">,</span> <span class="nv">0.5</span><span class="p p-Indicator">]</span>
-  <span class="nt">medium</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.5</span><span class="p p-Indicator">,</span> <span class="nv">250.</span><span class="p p-Indicator">]</span>
-  <span class="nt">large</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">250.</span><span class="p p-Indicator">,</span> <span class="nv">125000.</span><span class="p p-Indicator">]</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">size_class_bounds</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">small</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.001</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">medium</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">250.</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">large</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">250.</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">125000.</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
 </dd>
@@ -526,13 +536,13 @@ List of dictionaries specify fish parameters.</p>
 <div class="line"><strong>energy_frac_somatic_growth</strong>: Fraction of available energy routed to growth (fraction).</div>
 </div>
 <p>Example:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sf</span>
-  <span class="nt">size_class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">small</span>
-  <span class="nt">functional_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">forage</span>
-  <span class="nt">t_frac_pelagic_static</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.</span>
-  <span class="nt">pelagic_demersal_coupling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">harvest_selectivity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.</span>
-  <span class="nt">energy_frac_somatic_growth</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sf</span><span class="w"></span>
+<span class="w">  </span><span class="nt">size_class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span><span class="w"></span>
+<span class="w">  </span><span class="nt">functional_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forage</span><span class="w"></span>
+<span class="w">  </span><span class="nt">t_frac_pelagic_static</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pelagic_demersal_coupling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">harvest_selectivity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">energy_frac_somatic_growth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.</span><span class="w"></span>
 </pre></div>
 </div>
 </dd>
@@ -540,9 +550,9 @@ List of dictionaries specify fish parameters.</p>
 </dd>
 <dt>food_web</dt><dd><p>Build a food web of predator-prey relationships as a list.
 Here is an example entry:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">predator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sf</span>
-  <span class="nt">prey</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Zoo</span>
-  <span class="nt">preference</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">predator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sf</span><span class="w"></span>
+<span class="w">  </span><span class="nt">prey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Zoo</span><span class="w"></span>
+<span class="w">  </span><span class="nt">preference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.</span><span class="w"></span>
 </pre></div>
 </div>
 </dd>
@@ -581,8 +591,8 @@ Here is an example entry:</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="generated/feisty.driver.simulate_testcase.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -599,19 +609,17 @@ Here is an example entry:</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Colleen Petrik and Matthew C. Long<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Colleen Petrik and Matthew C. Long<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -429,7 +429,7 @@
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -463,14 +463,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>feisty.testcase.forcing_cyclic</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="section" id="feisty-testcase-forcing-cyclic">
@@ -495,21 +505,19 @@
 <dd class="field-even"><p><p><strong>forcing</strong> –</p>
 <p>The dataset with forcing variable.  For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xarray</span><span class="o">.</span><span class="n">Dataset</span><span class="o">&gt;</span>
-<span class="n">Dimensions</span><span class="p">:</span>              <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">366</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="n">zooplankton</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Dimensions</span><span class="p">:</span>          <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="n">zooplankton</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">Coordinates</span><span class="p">:</span>
-  <span class="o">*</span> <span class="n">time</span>                 <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">0.0</span> <span class="mf">1.0</span> <span class="mf">2.0</span> <span class="o">...</span> <span class="mf">363.0</span> <span class="mf">364.0</span> <span class="mf">365.0</span>
-  <span class="o">*</span> <span class="n">X</span>                    <span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">-</span><span class="mf">0.2381</span> <span class="o">...</span> <span class="mf">4.476</span> <span class="mf">4.738</span> <span class="mf">5.0</span>
-    <span class="n">zooplankton_biomass</span>  <span class="p">(</span><span class="n">zooplankton</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">U3</span> <span class="s1">&#39;Zoo&#39;</span>
-    <span class="n">mu</span>                   <span class="p">(</span><span class="n">zooplankton</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">4.0</span>
-    <span class="n">amp_fraction</span>         <span class="p">(</span><span class="n">zooplankton</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">0.2</span>
-    <span class="n">phase</span>                <span class="p">(</span><span class="n">zooplankton</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">0.0</span>
-<span class="n">Dimensions</span> <span class="n">without</span> <span class="n">coordinates</span><span class="p">:</span> <span class="n">zooplankton</span>
+  <span class="o">*</span> <span class="n">time</span>             <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">0.0</span> <span class="mf">1.0</span> <span class="mf">2.0</span> <span class="mf">3.0</span> <span class="o">...</span> <span class="mf">361.0</span> <span class="mf">362.0</span> <span class="mf">363.0</span> <span class="mf">364.0</span>
+  <span class="o">*</span> <span class="n">X</span>                <span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">-</span><span class="mf">0.2381</span> <span class="mf">0.02381</span> <span class="mf">0.2857</span> <span class="o">...</span> <span class="mf">4.476</span> <span class="mf">4.738</span> <span class="mf">5.0</span>
+  <span class="o">*</span> <span class="n">zooplankton</span>      <span class="p">(</span><span class="n">zooplankton</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">U3</span> <span class="s1">&#39;Zoo&#39;</span>
 <span class="n">Data</span> <span class="n">variables</span><span class="p">:</span>
-    <span class="n">T_pelagic</span>            <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">18.2</span> <span class="mf">18.2</span> <span class="o">...</span> <span class="mf">18.2</span> <span class="mf">18.2</span> <span class="mf">18.2</span>
-    <span class="n">T_bottom</span>             <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="o">...</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="mf">4.2</span>
-    <span class="n">poc_flux_bottom</span>      <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">0.02775</span> <span class="o">...</span> <span class="mf">0.002347</span> <span class="mf">0.002346</span>
-    <span class="n">zooC</span>                 <span class="p">(</span><span class="n">zooplankton</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">4.8</span> <span class="mf">4.8</span> <span class="o">...</span> <span class="mf">4.8</span> <span class="mf">4.8</span>
-    <span class="n">zoo_mort</span>              <span class="p">(</span><span class="n">zooplankton</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">2.3</span> <span class="mf">2.3</span> <span class="o">...</span> <span class="mf">2.3</span> <span class="mf">2.3</span>
+    <span class="n">T_pelagic</span>        <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">18.2</span> <span class="mf">18.2</span> <span class="mf">18.2</span> <span class="mf">18.2</span> <span class="o">...</span> <span class="mf">18.2</span> <span class="mf">18.2</span> <span class="mf">18.2</span>
+    <span class="n">T_bottom</span>         <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="o">...</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="mf">4.2</span> <span class="mf">4.2</span>
+    <span class="n">poc_flux_bottom</span>  <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">0.02785</span> <span class="mf">0.02775</span> <span class="o">...</span> <span class="mf">0.002347</span> <span class="mf">0.002346</span>
+    <span class="n">zooC</span>             <span class="p">(</span><span class="n">zooplankton</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">3.329</span> <span class="mf">3.329</span> <span class="o">...</span> <span class="mf">3.321</span> <span class="mf">3.321</span>
+    <span class="n">zoo_mort</span>         <span class="p">(</span><span class="n">zooplankton</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="n">float64</span> <span class="mf">0.7756</span> <span class="mf">0.7756</span> <span class="o">...</span> <span class="mf">0.7722</span>
+<span class="n">Attributes</span><span class="p">:</span>
+    <span class="n">note</span><span class="p">:</span>     <span class="n">Idealized</span> <span class="n">cyclic</span> <span class="n">forcing</span> <span class="k">for</span> <span class="n">FEISTY</span> <span class="n">model</span><span class="o">.</span>
 </pre></div>
 </div>
 </p>
@@ -544,8 +552,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="feisty.testcase.domain_tanh_shelf.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -562,19 +570,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Colleen Petrik and Matthew C. Long<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Colleen Petrik and Matthew C. Long<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
